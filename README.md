@@ -56,8 +56,9 @@ This notebook covers the following core concepts:
 
 Ensure you have Python installed. You can install the necessary dependencies using:
 
-```bash
-pip install torch pandas matplotlib tiktoken tensorflow tqdm
+```
+!pip install torch pandas matplotlib tiktoken tensorflow tqdm
+```
 (Optional) For the evaluation step, you will need to install and run Ollama.
 
 Running the Code
@@ -73,8 +74,7 @@ Training: The notebook includes a training loop. Note: Training is set to a low 
 Multi-Head Attention
 The core of the Transformer, implemented with nn.Module:
 
-Python
-
+```Python
 class MultiHeadAttention(nn.Module):
     def __init__(self, d_in, d_out, context_length, dropout, num_heads, qkv_bias=False):
         super().__init__()
@@ -83,11 +83,11 @@ class MultiHeadAttention(nn.Module):
         self.W_key = nn.Linear(d_in, d_out, bias=qkv_bias)
         self.W_value = nn.Linear(d_in, d_out, bias=qkv_bias)
         # ...
+```
 GPT Model
 The assembly of the full architecture:
 
-Python
-
+```Python
 class GPTModel(nn.Module):
     def __init__(self, cfg):
         super().__init__()
@@ -98,6 +98,7 @@ class GPTModel(nn.Module):
             *[TransformerBlock(cfg) for _ in range(cfg["n_layers"])])
         self.final_norm = LayerNorm(cfg["emb_dim"])
         self.out_head = nn.Linear(cfg["emb_dim"], cfg["vocab_size"], bias=False)
+```
 📊 Results
 The repository includes visualization functions to plot:
 
