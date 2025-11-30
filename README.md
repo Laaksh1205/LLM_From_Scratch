@@ -56,7 +56,8 @@ This notebook covers the following core concepts:
 
 Ensure you have Python installed. You can install the necessary dependencies using:
 
-!pip install torch pandas matplotlib tiktoken tensorflow tqdm
+```bash
+pip install torch pandas matplotlib tiktoken tensorflow tqdm
 (Optional) For the evaluation step, you will need to install and run Ollama.
 
 Running the Code
@@ -97,7 +98,6 @@ class GPTModel(nn.Module):
             *[TransformerBlock(cfg) for _ in range(cfg["n_layers"])])
         self.final_norm = LayerNorm(cfg["emb_dim"])
         self.out_head = nn.Linear(cfg["emb_dim"], cfg["vocab_size"], bias=False)
-
 📊 Results
 The repository includes visualization functions to plot:
 
